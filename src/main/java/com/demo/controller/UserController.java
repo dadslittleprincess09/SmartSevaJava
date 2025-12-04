@@ -1,22 +1,35 @@
 package com.demo.controller;
 
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-
-import jakarta.servlet.http.HttpSession;
-
 import java.util.Map;
 
-import com.demo.model.AppUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.demo.dto.LoginRequest;
+import com.demo.model.AppUser;
 import com.demo.service.EmailService;
 import com.demo.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api/user")
 //@CrossOrigin("*")
-@CrossOrigin(origins = "http://localhost:5501", allowCredentials = "true")
+// @CrossOrigin(origins = "http://localhost:5501","https://smart-final.vercel.app/", allowCredentials = "true")
+@CrossOrigin(
+    origins = {
+        "http://localhost:5501",
+        "http://127.0.0.1:5501",
+        "https://smart-final.vercel.app"
+    },
+    allowCredentials = "true"
+)
 public class UserController {
 
     @Autowired

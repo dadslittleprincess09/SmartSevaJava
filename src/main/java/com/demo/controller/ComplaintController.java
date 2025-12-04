@@ -1,5 +1,23 @@
 package com.demo.controller;
 
+import java.io.File;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.demo.dao.AppUserRepository;
 import com.demo.entity.Complaint;
 import com.demo.model.AppUser;
@@ -8,19 +26,11 @@ import com.demo.service.ComplaintService;
 import com.demo.service.EmailService;
 
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/complaints")
 @CrossOrigin(
-        origins = {"http://127.0.0.1:5501", "http://localhost:5501"},
+        origins = {"http://127.0.0.1:5501", "http://localhost:5501" , "https://smart-final.vercel.app/"},
         allowCredentials = "true",
         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.PATCH, RequestMethod.OPTIONS}
 )
